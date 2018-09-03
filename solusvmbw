@@ -1,0 +1,11 @@
+#!/bin/bash
+key=""
+hash=""
+res=$(curl -ks --data "key=${key}&hash=${hash}&action=info&bw=true" https://vm.umaxhosting.com/api/client/command.php)
+re="<bw>([^,]*),([^,]*)"
+if [[ $res =~ $re ]]; then 
+    total=$(numfmt --to=iec-i --suffix=B --format="%.3f" ${BASH_REMATCH[1]}) 
+    used=$(numfmt --to=iec-i --suffix=B --format="%.3f" ${BASH_REMATCH[2]}) 
+    percent=$(bc <<< "scale=3; (${BASH_REMATCH[2]}*100)/${BASH_REMATCH[1]}")
+    echo "  Data usage: ${used} of ${total} used (${percent}%)"
+fi
