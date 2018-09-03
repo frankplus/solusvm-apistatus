@@ -1,7 +1,8 @@
 #!/bin/bash
 key=""
 hash=""
-res=$(curl -ks --data "key=${key}&hash=${hash}&action=info&bw=true" https://vm.umaxhosting.com/api/client/command.php)
+url=""
+res=$(curl -ks --data "key=${key}&hash=${hash}&action=info&bw=true" ${url})
 re="<bw>([^,]*),([^,]*)"
 if [[ $res =~ $re ]]; then 
     total=$(numfmt --to=iec-i --suffix=B --format="%.3f" ${BASH_REMATCH[1]}) 
