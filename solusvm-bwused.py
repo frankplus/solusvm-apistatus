@@ -16,9 +16,9 @@ def humanFileSize(size):
         return '%.2f' % size + ' KiB'
     return '%.2f' % size + ' Bytes'
 
-key = 'J92K8-ZTPH4-O0Y5V'
-hash = 'e38c39f82b2650c0ec555c457e07595bb2ce7a02'
-url = 'https://vm.umaxhosting.com'
+key = ''
+hash = ''
+url = ''
 
 payload = {'key':key,
         'hash':hash,
